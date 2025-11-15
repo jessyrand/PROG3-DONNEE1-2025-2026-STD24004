@@ -15,6 +15,11 @@ FROM leave
 JOIN employee ON employee.id = leave.employee_id
 JOIN team ON team.id = employee.team_id;
 
-SELECT employee.contract_type contract_type,COUNT(employee.id) employee_count
+SELECT employee.contract_type contract_type, COUNT(employee.id) employee_count
 FROM employee
 GROUP BY employee.contract_type;
+
+SELECT COUNT(*)
+FROM employee
+JOIN leave ON leave.employee_id = employee.id
+WHERE CURRENT_DATE BETWEEN leave.start_date AND leave.end_date;
