@@ -14,3 +14,7 @@ SELECT
 FROM leave
 JOIN employee ON employee.id = leave.employee_id
 JOIN team ON team.id = employee.team_id;
+
+SELECT employee.contract_type contract_type,COUNT(employee.id) employee_count
+FROM employee
+GROUP BY employee.contract_type;
